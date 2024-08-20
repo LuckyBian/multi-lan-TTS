@@ -1,8 +1,11 @@
-# 填充符号和粤语拼音的声母、韵母
+import sys
+sys.path.append('/home/weizhenbian/vits_all')
 
+# 填充符号和粤语拼音的声母、韵母
+from text import cmudicts
 _pad = "_"
 
-punctuation = ['.', '!', '?',',','~','$','，','。','？','！','：','-']  # 标点符号列表
+punctuation = ['.', '!', '?',',','~','$','，','。','？','！','：','-',' ','\'',';','；','(',')','@']  # 标点符号列表
 
 pu_symbols = punctuation + ["SP", "SP2", "SP3", "UNK"]
 
@@ -241,79 +244,11 @@ v2 = [
     "vn5",
 ]
 
-arpa = {
-    "AH0",
-    "S",
-    "AH1",
-    "EY2",
-    "AE2",
-    "EH0",
-    "OW2",
-    "UH0",
-    "NG",
-    "B",
-    "G",
-    "AY0",
-    "M",
-    "AA0",
-    "F",
-    "AO0",
-    "ER2",
-    "UH1",
-    "IY1",
-    "AH2",
-    "DH",
-    "IY0",
-    "EY1",
-    "IH0",
-    "K",
-    "N",
-    "W",
-    "IY2",
-    "T",
-    "AA1",
-    "ER1",
-    "EH2",
-    "OY0",
-    "UH2",
-    "UW1",
-    "Z",
-    "AW2",
-    "AW1",
-    "V",
-    "UW2",
-    "AA2",
-    "ER",
-    "AW0",
-    "UW0",
-    "R",
-    "OW1",
-    "EH1",
-    "ZH",
-    "AE0",
-    "IH2",
-    "IH",
-    "Y",
-    "JH",
-    "P",
-    "AY1",
-    "EY0",
-    "OY2",
-    "TH",
-    "HH",
-    "D",
-    "ER0",
-    "CH",
-    "AO1",
-    "AE1",
-    "AO2",
-    "OY1",
-    "AY2",
-    "IH1",
-    "OW0",
-    "L",
-    "SH",
-}
+_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+
+# Prepend "@" to ARPAbet symbols to ensure uniqueness:
+_arpabet = ['@' + s for s in cmudicts.valid_symbols]
+
 
 def find_duplicates(input_list):
     seen = set()
@@ -331,16 +266,16 @@ def find_duplicates(input_list):
 # 声母、韵母和韵母加声调的组合
 symbolsyue = [_pad] + pu_symbols + c + v + [vowel + tone for vowel in v for tone in tones]
 symbolszh = [_pad] + pu_symbols + c2 + v2
-symbolsen = [_pad] + pu_symbols + list(arpa)
+symbolsen = [_pad] + pu_symbols + list(_letters) + list(_arpabet)
 
 
-symbols = [_pad] + pu_symbols + c + v + [vowel + tone for vowel in v for tone in tones] + c2 + v2 + list(arpa)
+symbols = [_pad] + pu_symbols + c + v + [vowel + tone for vowel in v for tone in tones] + c2 + v2 + list(_letters) + list(_arpabet)
 
 
 #print(len([_pad] + pu_symbols))
 #print(len(c + v + [vowel + tone for vowel in v for tone in tones]))
 #print(len(c2 + v2))
-#print(len(list(arpa)))
+#print(len(list(_letters) + list(_arpabet)))
 #duplicates = find_duplicates(symbols)
 
 #print("重复的字符串有:", duplicates)

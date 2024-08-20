@@ -245,7 +245,6 @@ def classify_characters(input_string):
 def cantonese_to_ipa(text):
     text = number_to_cantonese(text.upper())
     text = converter.convert(text)
-    #text = re.sub(r'[A-Z]', lambda x: latin_to_ipa(x.group())+' ', text)
     text = re.sub(r'[、；：]', '，', text)
     text = re.sub(r'\s*，\s*', ',', text)
     text = re.sub(r'\s*。\s*', '.', text)
@@ -273,19 +272,11 @@ def cantonese_to_ipa(text):
                 no_jyutping_words.append(word)  # 添加到没有拼音的字列表
         else:
             result_list.append(jp)
-
-    # 输出处理后的拼音列表
-    # 如果存在没有拼音的字，则输出这些字
     if no_jyutping_words:
         print(text)
         print("处理后的拼音列表：", result_list)
         print("没有拼音的字：", ' '.join(no_jyutping_words))
   
     text = ' '.join(result_list)
-    #print("start")
-    #print(text)
     par = parse_jyutping(text)
-    #print(par)
-    #result_indices = [symbols.index(symbol) for symbol in par if symbol in symbols]
-    #print(result_indices)
     return par

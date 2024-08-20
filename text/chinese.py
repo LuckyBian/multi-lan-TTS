@@ -45,18 +45,24 @@ tone_modifier = ToneSandhi()
 def replace_punctuation(text):
     text = text.replace("嗯", "恩").replace("呣", "母")
     pattern = re.compile("|".join(re.escape(p) for p in rep_map.keys()))
-
     replaced_text = pattern.sub(lambda x: rep_map[x.group()], text)
 
+    # 确保 punctuation 列表中的所有字符都适用于正则表达式
+    safe_punctuation = re.escape("".join(punctuation))
+
+    # 使用re.escape确保所有特殊字符都被正确处理
     replaced_text = re.sub(
-        r"[^\u4e00-\u9fa5" + "".join(punctuation) + r"]+", "", replaced_text
+        r"[^\u4e00-\u9fa5" + safe_punctuation + r"]+", "", replaced_text
     )
 
     return replaced_text
 
 
 def g2pzh(text):
-    pattern = r"(?<=[{0}])\s*".format("".join(punctuation))
+    # 保证空格和其他标点符号都被正确地转义
+    escaped_punctuation = re.escape("".join(punctuation))
+    # 确保将空格也包括在内
+    pattern = r"(?<=[{0}])\s*".format(escaped_punctuation)
     sentences = [i for i in re.split(pattern, text) if i.strip() != ""]
     phones, word2ph = _g2p(sentences)
     return phones

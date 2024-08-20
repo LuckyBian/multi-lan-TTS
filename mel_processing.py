@@ -12,7 +12,6 @@ from librosa.util import normalize, pad_center, tiny
 from scipy.signal import get_window
 from scipy.io.wavfile import read
 from librosa.filters import mel as librosa_mel_fn
-#os.environ["CUDA_VISIBLE_DEVICES"] = '0,1,2,3'
 MAX_WAV_VALUE = 32768.0
 
 

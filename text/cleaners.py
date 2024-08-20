@@ -1,8 +1,9 @@
-""" from https://github.com/keithito/tacotron """
+import sys
+sys.path.append('/home/weizhenbian/vits_all')
 
 import re
 from unidecode import unidecode
-from .numbers import normalize_numbers
+from .n import normalize_numbers
 
 
 _whitespace_re = re.compile(r'\s+')
