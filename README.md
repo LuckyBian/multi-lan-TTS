@@ -25,6 +25,26 @@ If you can't find the same person speaking multiple languages, you can use [this
 
 ## Pre-requisites
 
+1. After ASR, different tags are added to different languages. [Cantonese text], {English text}, (Chinese text).
+```
+python addlabel.py
+```
+2. Resample the audio to a sampling rate of 22050.
+
+```
+python resam.py
+```
+
+3. Change the audio to mono.
+
+```
+python channel.py
+```
+
+4. Denosing
+
+Use the noise reduction method [here](https://github.com/LuckyBian/GPTSOVITS2) to reduce the noise of the audio
+
 
 ## Training Exmaple
 ```
