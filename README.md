@@ -59,11 +59,9 @@ python split.py
 7. Change the data file path in the config file.
 
 
-
-
 ## Training Exmaple
 ```
-python train.py -c path/to/json/file -m model
+python train.py -c path/to/json/file -m path/to/model
 ```
 
 ## Inference
