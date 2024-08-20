@@ -23,7 +23,7 @@ If you can't find the same person speaking multiple languages, you can use [this
 
 
 
-## Pre-requisites
+## Pre-processing
 
 1. After ASR, different tags are added to different languages. [Cantonese text], {English text}, (Chinese text).
 ```
