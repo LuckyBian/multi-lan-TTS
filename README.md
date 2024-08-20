@@ -49,6 +49,15 @@ python channel.py
 
 Use the noise reduction method [here](https://github.com/LuckyBian/GPTSOVITS2) to reduce the noise of the audio
 
+6. Organize file paths and text and split into training and validation sets.
+
+```
+python getdata.py
+python split.py
+```
+
+7. Change the data file path in the config file.
+
 
 
 
