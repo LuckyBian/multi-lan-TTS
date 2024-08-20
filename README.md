@@ -15,6 +15,14 @@ pip install -r requirements.txt
 python env.py
 ```
 
+## Dataset
+
+Find the Chinese, English and Cantonese corpora of the same speaker and convert the speech into text (using asr in [this](https://github.com/LuckyBian/GPTSOVITS2)). Finally, put the speech and text into two folders. The name of the speech and the corresponding text must be the same.
+
+If you can't find the same person speaking multiple languages, you can use [this](https://github.com/Grace9994/CoMoSVC) to convert voices.
+
+
+
 ## Pre-requisites
 
 
