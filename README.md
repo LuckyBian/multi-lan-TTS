@@ -29,21 +29,27 @@ If you can't find the same person speaking multiple languages, you can use [this
 ```
 python addlabel.py
 ```
-2. Resample the audio to a sampling rate of 22050.
+
+2. Merge and slice the audio into 10s segments by [this](https://github.com/LuckyBian/GPTSOVITS2)
+
+
+3. Resample the audio to a sampling rate of 22050.
 
 ```
 python resam.py
 ```
 
-3. Change the audio to mono.
+4. Change the audio to mono.
 
 ```
 python channel.py
 ```
 
-4. Denosing
+5. Denosing
 
 Use the noise reduction method [here](https://github.com/LuckyBian/GPTSOVITS2) to reduce the noise of the audio
+
+
 
 
 ## Training Exmaple
